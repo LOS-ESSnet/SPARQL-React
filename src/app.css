@@ -1,0 +1,32 @@
+.centered {
+	text-align: center;
+}
+
+.page-title {
+	border: 2px solid #ee3467;
+	background-color: #ffffff;
+	color: black;
+	border-radius: 6px;
+	padding: 10px;
+	margin-bottom: 20px;
+	text-align: center;
+	font-family: Arial;
+	font-size: 300%;
+}
+
+.page-button {
+	margin-top: 10px;
+	margin-bottom: 25px;
+}
+
+.item,
+.item > a {
+	font-size: 30px;
+	color: #ee3467;
+}
+
+.item-title {
+	font-size: 30px;
+	color: #cc0052;
+	font-weight: bold;
+}

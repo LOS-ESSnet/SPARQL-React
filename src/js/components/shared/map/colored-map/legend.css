@@ -1,0 +1,28 @@
+.legend-container {
+	background: #fff;
+	margin: 24px;
+	padding: 12px 24px;
+	position: absolute;
+	width: 20%;
+	top: 0;
+	right: 0;
+	outline: none;
+	z-index: 1;
+}
+
+.square {
+	height: 10%;
+	width: 10%;
+}
+
+.tooltip {
+	position: absolute;
+	margin: 8px;
+	padding: 4px;
+	background: rgba(0, 0, 0, 0.8);
+	color: #fff;
+	max-width: 300px;
+	font-size: 14px;
+	z-index: 9;
+	pointer-events: none;
+}
