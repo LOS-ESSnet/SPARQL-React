@@ -1,5 +1,5 @@
 export { default as Home } from 'js/components/home';
-export { default as Pop } from 'js/components/viz/pop-entreprise/main';
+export { default as Pop } from 'js/components/viz/pop-close-establishment';
 export { default as Permits } from 'js/components/viz/permits';
 export { default as Population } from 'js/components/viz/population';
 export {

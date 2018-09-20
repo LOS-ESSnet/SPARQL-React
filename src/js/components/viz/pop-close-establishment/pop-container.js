@@ -13,13 +13,10 @@ PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 select ?polygon ?population where {
     SERVICE <${config.SIRENE_ENDPOINT}> {
-      # Select establishment location
-     <https://api.insee.fr/entreprises/sirene/siret/${siretEntreprise}> geo-pos:long ?lon ;
-       geo-pos:lat ?lat .
+     <http://id.insee.fr/sirene/siret/${siretEntreprise}> geo-pos:long ?lon ;
+                                                          geo-pos:lat ?lat .
     }
-    # Select population around 'distance'
-    SERVICE <${config.CENSUS_POINT_ENDPOINT}>
-    {
+    SERVICE <${config.CENSUS_POINT_ENDPOINT}> {
       ?c omgeo:nearby(?lat ?lon "${distance}km") .
     	?c gn:population ?population .
         ?c geo:hasGeometry ?geo .
@@ -29,12 +26,12 @@ select ?polygon ?population where {
 `;
 
 const connector = sparqlConnect(queryBuilder, {
-	queryName: 'carreauxProches',
+	queryName: 'closeTiles',
 	params: ['siretEntreprise', 'distance'],
 });
 
 const PopContainer = ({
-	carreauxProches,
+	closeTiles,
 	longitude,
 	latitude,
 	zoom,
@@ -42,7 +39,7 @@ const PopContainer = ({
 	labelEntreprise,
 }) => {
 	const reducer = (acc, curVal) => acc + Number.parseFloat(curVal.population);
-	const sommePop = carreauxProches.reduce(reducer, 0);
+	const sommePop = closeTiles.reduce(reducer, 0);
 	return (
 		<React.Fragment>
 			<h2 className="centered">
@@ -50,7 +47,7 @@ const PopContainer = ({
 				{labelEntreprise} "
 			</h2>
 			<Map
-				data={carreauxProches}
+				data={closeTiles}
 				longitude={longitude}
 				latitude={latitude}
 				zoom={zoom}
