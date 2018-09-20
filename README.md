@@ -1,6 +1,6 @@
-# SPARQL React Demo
+# SPARQL React
 
-React demo Web application to consume and display SPARQL data
+React Web application to consume and display SPARQL data
 
 ## Getting started
 
