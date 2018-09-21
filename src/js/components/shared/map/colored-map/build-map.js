@@ -29,7 +29,6 @@ const createClasses = (featureCollection, accessor, classes) => {
 };
 
 const getClass = (classes, value) => {
-	console.log(classes);
 	let cl = classes.length - 1;
 	for (let i = 0; i < classes.length - 1; i++) {
 		const c = Number.parseFloat(classes[i][0]);

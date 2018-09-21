@@ -2,6 +2,7 @@ import React from 'react';
 import { sparqlConnect } from 'sparql-connect';
 import Viz from './viz';
 import Spinner from 'js/components/shared/spinner';
+import config from 'config';
 
 const queryBuilder = () => `
 PREFIX qb: <http://purl.org/linked-data/cube#>
@@ -36,7 +37,7 @@ select ?label ?activePop ?unemployedPop ?contours where {
     }
     ?area skos:prefLabel ?label .
     ?area foaf:focus ?areaInsee .
-    SERVICE <http://graphdb.linked-open-statistics.org/repositories/nuts> {
+    SERVICE <${config.NUTS_ENDPOINT}> {
     ?areaIGN owl:sameAs ?areaInsee .
         ?areaIGN geo:hasGeometry ?geometry .
     ?geometry geo:asWKT ?contours .

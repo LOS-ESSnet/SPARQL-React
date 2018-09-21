@@ -52,7 +52,7 @@ with open('geo-sirene.ttl', 'w', encoding="utf8") as output:
     output.write("@prefix  rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n")
     output.write("@prefix  geo-pos: <http://www.w3.org/2003/01/geo/wgs84_pos#> .\n")
     output.write("@prefix  xsd: <http://www.w3.org/2001/XMLSchema#> .\n")
-    output.write("@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns> .\n")
+    output.write("@prefix  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n")
     output.write("@prefix  geo: <http://www.opengis.net/ont/geosparql#> .\n")
     output.write("@prefix  org: <http://www.w3.org/ns/org#> .\n")
     output.write("@prefix  gn: <http://www.geonames.org/ontology#> .\n")
