@@ -52,7 +52,7 @@ class Table extends Component {
 			<DataTables
 				title={title}
 				titleStyle={{ color: 'white' }}
-				filterHintText="Rechercher ..."
+				filterHintText="Rechercher..."
 				filterValue={filter}
 				height={'auto'}
 				selectable={false}

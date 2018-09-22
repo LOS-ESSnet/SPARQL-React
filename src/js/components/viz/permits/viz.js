@@ -26,7 +26,7 @@ class MyPage extends React.Component {
 					<Select
 						col={4}
 						offset={4}
-						label="Change year ..."
+						label="Change year..."
 						options={[
 							{ id: '2014', label: '2014' },
 							{ id: '2015', label: '2015' },

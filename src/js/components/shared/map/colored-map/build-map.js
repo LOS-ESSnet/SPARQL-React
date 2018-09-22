@@ -42,7 +42,7 @@ const getClass = (classes, value) => {
 
 export const buildGeoData = data => ({
 	type: 'FeatureCollection',
-	features: data.map(({ contours, ...other }) => ({
+	features: data.map(({ contours,...other }) => ({
 		geometry: contours,
 		properties: {
 			...other,

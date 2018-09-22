@@ -32,5 +32,5 @@ const ContainerDepartements = ({ departementPopulation }) => (
 );
 
 export default connector(ContainerDepartements, {
-	loading: () => <Spinner text={'Loading ...'} />,
+	loading: () => <Spinner text={'Loading...'} />,
 });

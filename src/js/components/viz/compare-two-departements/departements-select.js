@@ -14,7 +14,7 @@ const DepartementsSelect = ({
 		<div className="mui-row">
 			<div className="mui-col-md-4 mui-col-md-offset-1">
 				<Select
-					label="Fix your first departement ..."
+					label="Fix your first departement..."
 					options={departements.filter(d => d.id !== depB)}
 					value={depA}
 					onChange={e => handleChangeDepA(e, departements)}
@@ -22,7 +22,7 @@ const DepartementsSelect = ({
 			</div>
 			<div className="mui-col-md-4 mui-col-md-offset-2">
 				<Select
-					label="Fix your second departement ..."
+					label="Fix your second departement..."
 					options={departements.filter(d => d.id !== depA)}
 					value={depB}
 					onChange={e => handleChangeDepB(e, departements)}
@@ -33,5 +33,5 @@ const DepartementsSelect = ({
 };
 
 export default departementsConnector(DepartementsSelect, {
-	loading: () => <Spinner text={'Loading ...'} />,
+	loading: () => <Spinner text={'Loading...'} />,
 });

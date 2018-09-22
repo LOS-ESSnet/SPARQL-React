@@ -46,5 +46,5 @@ const connector = sparqlConnect(queryBuilder, {
 });
 
 export default connector(Viz, {
-	loading: () => <Spinner text={'Loading ...'} />,
+	loading: () => <Spinner text={'Loading...'} />,
 });

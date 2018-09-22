@@ -40,5 +40,5 @@ const ContainerRegions = ({ regionPopulation }) => (
 );
 
 export default connector(ContainerRegions, {
-	loading: () => <Spinner text={'Loading ...'} />,
+	loading: () => <Spinner text={'Loading...'} />,
 });

@@ -15,7 +15,7 @@ export default ({ data, legend }) => {
 		'#D3195C',
 		'#D00B51',
 	];
-	const geoJsonData = data.map(({ contours, ...d }) => ({
+	const geoJsonData = data.map(({ contours,...d }) => ({
 		contours: wktToGeojson(contours),
 		...d,
 	}));

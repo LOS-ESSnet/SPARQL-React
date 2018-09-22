@@ -19,7 +19,7 @@ class Main extends Component {
 				<div className="mui-row loading-row">
 					<div className="mui-col-md-5">
 						<Select
-							label="Select a geography ..."
+							label="Select a geography..."
 							options={areas}
 							value={type}
 							onChange={this.handleChangeType}

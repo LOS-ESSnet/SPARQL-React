@@ -34,9 +34,9 @@ const connector = sparqlConnect(queryBuilder, {
 const TownSelect = ({ townList, town, handleChange }) => {
 	return (
 		<div>
-			<h2 className="centered">Town ...</h2>
+			<h2 className="centered">Town...</h2>
 			<ReactSelect
-				placeholder="Select a town ..."
+				placeholder="Select a town..."
 				options={townList}
 				value={town ? townList.find(d => d.value === town) : ''}
 				onChange={handleChange}

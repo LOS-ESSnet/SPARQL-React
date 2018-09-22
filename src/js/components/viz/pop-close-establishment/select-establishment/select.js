@@ -50,7 +50,7 @@ const EntSelect = ({ establishmentList, establishment, handleChange }) => {
 			<div className="mui-col-md-6 mui-col-md-offset-3">
 				<h2 className="centered">{`Establishment list (${size} ${res})`}</h2>
 				<ReactSelect
-					placeholder="Select an establishment ..."
+					placeholder="Select an establishment..."
 					options={establishmentList}
 					value={establishment}
 					onChange={e =>

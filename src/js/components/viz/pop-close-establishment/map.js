@@ -28,7 +28,7 @@ export default ({ data, latitude, longitude, zoom }) => {
 
 	const contentArray = [['Population', 'value', '']];
 
-	const geoJsonData = mapData.map(({ contours, ...d }) => ({
+	const geoJsonData = mapData.map(({ contours,...d }) => ({
 		contours: wktToGeojson(contours),
 		...d,
 	}));

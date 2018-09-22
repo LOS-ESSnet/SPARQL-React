@@ -33,5 +33,5 @@ const ContainerCommunes = ({ communePopulation }) => (
 );
 
 export default connector(ContainerCommunes, {
-	loading: () => <Spinner text={'Loading ...'} />,
+	loading: () => <Spinner text={'Loading...'} />,
 });

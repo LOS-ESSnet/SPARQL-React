@@ -26,9 +26,9 @@ const connector = sparqlConnect(queryBuilder, {
 
 const NafSelect = ({ nafList, nafSelect, handleChange }) => (
 	<div>
-		<h2 className="centered">Activity ...</h2>
+		<h2 className="centered">Activities...</h2>
 		<ReactSelect
-			placeholder="Select an activity ..."
+			placeholder="Select activities..."
 			options={nafList}
 			value={nafSelect ? nafList.find(n => n.value === nafSelect) : ''}
 			onChange={handleChange}

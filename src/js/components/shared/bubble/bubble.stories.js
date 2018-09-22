@@ -19,8 +19,8 @@ const xyData = Array(100)
 stories.add('Default', () => (
 	<Bubble
 		data={xyData}
-		xName="Taux ..."
-		yName="Taux ..."
+		xName="Taux..."
+		yName="Taux..."
 		sizeName="Population"
 		label="Area"
 	/>

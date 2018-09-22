@@ -36,7 +36,7 @@ export default ({
 				<div className="mui-col-md-6">
 					<Input
 						id="my-search"
-						label="Search in establishment name ..."
+						label="Search in establishment name..."
 						value={search}
 						onChange={e => handleChange(e, 'search')}
 						titleCenter={true}

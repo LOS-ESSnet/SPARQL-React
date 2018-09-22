@@ -20,8 +20,8 @@ const DimensionsSelect = ({
 		? 'mui-col-md-4 mui-col-md-offset-4'
 		: 'mui-col-md-4 mui-col-md-offset-1';
 	const labelA = hasOneDimensions
-		? 'Fix your dimension ...'
-		: 'Fix your first dimension ...';
+		? 'Fix your dimension...'
+		: 'Fix your first dimension...';
 	return (
 		<div className="mui-row loading-row">
 			<div className={selectAClass}>
@@ -35,7 +35,7 @@ const DimensionsSelect = ({
 			{!hasOneDimensions && (
 				<div className="mui-col-md-4 mui-col-md-offset-2">
 					<Select
-						label="Fix your second dimension ..."
+						label="Fix your second dimension..."
 						options={filteredDimensionB}
 						value={dimB}
 						onChange={handleChangeDimB}
@@ -47,5 +47,5 @@ const DimensionsSelect = ({
 };
 
 export default dimensionsConnector(DimensionsSelect, {
-	loading: () => <Spinner text={'Loading ...'} />,
+	loading: () => <Spinner text={'Loading...'} />,
 });

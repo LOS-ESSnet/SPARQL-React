@@ -22,6 +22,6 @@ export const buildDoughnutData = (data, depId) => {
 			);
 			return _;
 		},
-		{ ...defaultDoughnut }
+		{...defaultDoughnut }
 	);
 };

@@ -1,6 +1,6 @@
 export const deleteLabelFromArray = array =>
 	array.reduce((_, a) => {
-		const { label, ...newObj } = a;
+		const { label,...newObj } = a;
 		_.push(newObj);
 		return _;
 	}, []);

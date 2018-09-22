@@ -29,9 +29,9 @@ const DepSelect = ({ depList, departement, handleChange }) => {
 	});
 	return (
 		<div>
-			<h2 className="centered">Departement ...</h2>
+			<h2 className="centered">Departement...</h2>
 			<ReactSelect
-				placeholder="Select a departement ..."
+				placeholder="Select a departement..."
 				options={depMetro}
 				value={departement ? depMetro.find(d => d.value === departement) : ''}
 				onChange={handleChange}

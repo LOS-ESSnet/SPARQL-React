@@ -19,7 +19,7 @@ class DepartementSelect extends Component {
 				<div className="mui-row loading-row">
 					<div className="mui-col-md-5 mui-col-md-offset-1">
 						<Select
-							label="Commune into departement ..."
+							label="Commune into departement..."
 							options={departements}
 							value={departement}
 							onChange={this.handleChangeType}
@@ -33,5 +33,5 @@ class DepartementSelect extends Component {
 }
 
 export default departementsConnector(DepartementSelect, {
-	loading: () => <Spinner text={'Loading ...'} />,
+	loading: () => <Spinner text={'Loading...'} />,
 });

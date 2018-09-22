@@ -11,7 +11,7 @@ const DimensionModalitiesSelect = ({
 }) => (
 	<div className={`mui-col-md-4 mui-col-md-offset-${offset || 1}`}>
 		<Select
-			label="Select a modality ..."
+			label="Select a modality..."
 			options={dimensionModalities}
 			value={modality}
 			onChange={e => handleChange(e, dimensionModalities)}
@@ -20,5 +20,5 @@ const DimensionModalitiesSelect = ({
 );
 
 export default dimensionModalitiesConnector(DimensionModalitiesSelect, {
-	loading: () => <Spinner text={'Loading ...'} />,
+	loading: () => <Spinner text={'Loading...'} />,
 });
