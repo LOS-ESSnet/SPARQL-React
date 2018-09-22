@@ -1,7 +1,17 @@
 import React from 'react';
 import { TextField } from 'material-ui';
 
-function Input({ id, label, value, onChange, required, error, disabled, col }) {
+function Input({
+	id,
+	label,
+	value,
+	onChange,
+	required,
+	error,
+	disabled,
+	col,
+	titleCenter,
+}) {
 	const inputStyle = {
 		color: 'black',
 	};
@@ -15,7 +25,9 @@ function Input({ id, label, value, onChange, required, error, disabled, col }) {
 	return (
 		<div className={`mui-col-md-${col}`}>
 			<div className="mui-row">
-				<h2 className="mui-col-md-12">{label}</h2>
+				<h2 className={`mui-col-md-12 ${titleCenter && 'centered'}`}>
+					{label}
+				</h2>
 			</div>
 			<div className="mui-row">
 				<TextField
