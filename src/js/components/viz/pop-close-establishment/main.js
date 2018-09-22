@@ -9,14 +9,25 @@ export default class Main extends Component {
 	constructor() {
 		super();
 		this.state = {
-			establishment: { id: '' },
-			nafItem: { id: '' },
+			establishment: {},
+			nafItem: '',
+			departement: '',
+			town: '',
 			distance: 1,
 			zoom: 12,
 			search: '',
+			updateEstablishmentList: false,
 		};
 		this.handleChange = (object, key) =>
-			this.setState({ [key]: object, establishment: { id: '' } });
+			this.setState({
+				[key]: object,
+				establishment: {},
+				updateEstablishmentList: false,
+			});
+		this.clickSearch = e => {
+			e.preventDefault();
+			this.setState({ updateEstablishmentList: true });
+		};
 		this.handleChangeEstablishment = establishment =>
 			this.setState({ establishment });
 		this.handleChangeDistance = distance => {
@@ -27,45 +38,57 @@ export default class Main extends Component {
 		};
 	}
 	render() {
-		const { establishment, distance, zoom, nafItem, search } = this.state;
+		const {
+			establishment,
+			distance,
+			zoom,
+			nafItem,
+			departement,
+			town,
+			search,
+			updateEstablishmentList,
+		} = this.state;
 		return (
 			<React.Fragment>
 				<Search
 					nafItem={nafItem}
+					departement={departement}
+					town={town}
 					search={search}
 					handleChange={this.handleChange}
+					clickSearch={this.clickSearch}
 				/>
-				{nafItem.id &&
-					search.length >= 3 && (
-						<React.Fragment>
-							<EstablishmentSelect
-								entSelect={establishment.id}
-								handleChange={this.handleChangeEstablishment}
-								idNaf={nafItem.id}
-								search={search}
-							/>
-							{establishment.id && <Divider />}
-							{Object.keys(establishment.id).length !== 0 && (
-								<React.Fragment>
-									<h2>Vary the diameter around the company!</h2>
-									<Slider
-										value={distance}
-										min={1}
-										max={20}
-										onChange={(event, val) => this.handleChangeDistance(val)}
-									/>
-									<Container
-										siretEntreprise={establishment.id}
-										distance={distance}
-										longitude={establishment.lon}
-										latitude={establishment.lat}
-										zoom={zoom}
-										labelEntreprise={establishment.label}
-									/>
-								</React.Fragment>
-							)}
-						</React.Fragment>
-					)}
+				{updateEstablishmentList && (
+					<React.Fragment>
+						<EstablishmentSelect
+							establishment={establishment}
+							handleChange={this.handleChangeEstablishment}
+							nafItem={nafItem}
+							geoloc={town || departement}
+							search={search}
+						/>
+						{Object.keys(establishment).length !== 0 && (
+							<React.Fragment>
+								<Divider />
+								<h2 className="centered">
+									Vary the diameter around the company!
+								</h2>
+								<Slider
+									value={distance}
+									min={1}
+									max={20}
+									onChange={(event, val) => this.handleChangeDistance(val)}
+								/>
+								<Container
+									siretEntreprise={establishment.value}
+									distance={distance}
+									zoom={zoom}
+									labelEntreprise={establishment.label}
+								/>
+							</React.Fragment>
+						)}
+					</React.Fragment>
+				)}
 			</React.Fragment>
 		);
 	}

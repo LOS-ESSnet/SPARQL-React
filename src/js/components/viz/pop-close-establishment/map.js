@@ -11,7 +11,6 @@ export default ({ data, latitude, longitude, zoom }) => {
 
 	const legend = {
 		title: 'Population',
-		body: 'Description',
 	};
 
 	const colors = [

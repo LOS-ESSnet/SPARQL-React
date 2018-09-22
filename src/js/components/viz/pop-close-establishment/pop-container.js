@@ -6,12 +6,12 @@ import config from 'config';
 
 const queryBuilder = (siretEntreprise, distance) => `
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX geo-pos: <http://www.w3.org/2003/01/geo/wgs84_pos>
+PREFIX geo-pos: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX gn: <http://www.geonames.org/ontology#>
 PREFIX omgeo: <http://www.ontotext.com/owlim/geo#>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-select ?polygon ?population where {
+select ?polygon ?population ?lon ?lat where {
     SERVICE <${config.SIRENE_ENDPOINT}> {
      <http://id.insee.fr/sirene/siret/${siretEntreprise}> geo-pos:long ?lon ;
                                                           geo-pos:lat ?lat .
@@ -48,8 +48,8 @@ const PopContainer = ({
 			</h2>
 			<Map
 				data={closeTiles}
-				longitude={longitude}
-				latitude={latitude}
+				longitude={closeTiles[0].lon}
+				latitude={closeTiles[0].lat}
 				zoom={zoom}
 			/>
 		</React.Fragment>
