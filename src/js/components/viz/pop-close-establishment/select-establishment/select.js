@@ -3,6 +3,7 @@ import { sparqlConnect } from 'sparql-connect';
 import Spinner from 'js/components/shared/spinner';
 import ReactSelect from 'js/components/shared/react-select';
 import config from 'config';
+import D from 'js/i18n';
 
 const nafFilter = nafItem => (nafItem ? `?e org:purpose <${nafItem}> .` : '');
 const geolocFilter = geoloc => {
@@ -44,13 +45,15 @@ const connector = sparqlConnect(queryBuilder, {
 
 const EntSelect = ({ establishmentList, establishment, handleChange }) => {
 	const size = establishmentList.length;
-	const res = size > 1 ? 'results' : 'result';
+	const res = size > 1 ? `${D.result}s` : `${D.result}`;
 	return (
 		<div className="mui-row">
 			<div className="mui-col-md-6 mui-col-md-offset-3">
-				<h2 className="centered">{`Establishment list (${size} ${res})`}</h2>
+				<h2 className="centered">{`${
+					D.establishmentList
+				} (${size} ${res})`}</h2>
 				<ReactSelect
-					placeholder="Select an establishment..."
+					placeholder={D.selectEstablishment}
 					options={establishmentList}
 					value={establishment}
 					onChange={e =>
@@ -65,5 +68,5 @@ const EntSelect = ({ establishmentList, establishment, handleChange }) => {
 };
 
 export default connector(EntSelect, {
-	loading: () => <Spinner text={'Loading'} />,
+	loading: () => <Spinner text={D.loading} />,
 });

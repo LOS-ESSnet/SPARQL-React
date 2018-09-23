@@ -3,6 +3,7 @@ import { sparqlConnect } from 'sparql-connect';
 import Spinner from 'js/components/shared/spinner';
 import Map from './map';
 import config from 'config';
+import D from 'js/i18n';
 
 const queryBuilder = (siretEntreprise, distance) => `
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -43,8 +44,7 @@ const PopContainer = ({
 	return (
 		<React.Fragment>
 			<h2 className="centered">
-				There are {sommePop} inhabitants à {distance} km around "{' '}
-				{labelEntreprise} "
+				{D.inhabitantEstablishment(sommePop, distance, labelEntreprise)}
 			</h2>
 			<Map
 				data={closeTiles}
@@ -57,5 +57,5 @@ const PopContainer = ({
 };
 
 export default connector(PopContainer, {
-	loading: () => <Spinner text={'Loading'} />,
+	loading: () => <Spinner text={D.loading} />,
 });

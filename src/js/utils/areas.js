@@ -1,12 +1,14 @@
+import D from 'js/i18n';
+
 export const areas = [
-	{ id: 'COMMUNE', label: 'Commune' },
+	{ id: 'COMMUNE', label: D.municipality },
 	{
 		id: 'DEPARTEMENT',
-		label: 'Departement',
+		label: D.department,
 	},
 	{
 		id: 'REGION',
-		label: 'Region',
+		label: D.region,
 	},
 ];
 

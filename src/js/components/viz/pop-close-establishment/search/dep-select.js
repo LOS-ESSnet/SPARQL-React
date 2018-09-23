@@ -3,6 +3,7 @@ import { sparqlConnect } from 'sparql-connect';
 import Spinner from 'js/components/shared/spinner';
 import ReactSelect from 'js/components/shared/react-select';
 import config from 'config';
+import D from 'js/i18n';
 
 const queryBuilder = () => `
           PREFIX igeo:<http://rdf.insee.fr/def/geo#>
@@ -29,9 +30,9 @@ const DepSelect = ({ depList, departement, handleChange }) => {
 	});
 	return (
 		<div>
-			<h2 className="centered">Departement...</h2>
+			<h2 className="centered">{D.departmentTitle}</h2>
 			<ReactSelect
-				placeholder="Select a departement..."
+				placeholder={D.selectDepartment}
 				options={depMetro}
 				value={departement ? depMetro.find(d => d.value === departement) : ''}
 				onChange={handleChange}
@@ -42,5 +43,5 @@ const DepSelect = ({ depList, departement, handleChange }) => {
 };
 
 export default connector(DepSelect, {
-	loading: () => <Spinner text={'Loading'} />,
+	loading: () => <Spinner text={D.loading} />,
 });

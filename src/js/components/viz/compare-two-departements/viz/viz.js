@@ -2,6 +2,7 @@ import React from 'react';
 import Tabs from 'js/components/shared/tabs';
 import { Chart } from 'primereact/chart';
 import * as B from './build-data';
+import D from 'js/i18n';
 
 export default ({ data, depA, depB, valueTabs, handleChangeTabsValue }) => {
 	const tabs = [
@@ -29,7 +30,7 @@ export default ({ data, depA, depB, valueTabs, handleChangeTabsValue }) => {
 			),
 		},
 		{
-			label: 'Stacked-Bar',
+			label: D.stackedBar,
 			content: (
 				<div className="mui-row">
 					<div className="mui-col-md-12">

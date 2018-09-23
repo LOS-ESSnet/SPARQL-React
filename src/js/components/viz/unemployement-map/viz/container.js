@@ -3,6 +3,7 @@ import { sparqlConnect } from 'sparql-connect';
 import Viz from './viz';
 import Spinner from 'js/components/shared/spinner';
 import config from 'config';
+import D from 'js/i18n';
 
 const queryBuilder = () => `
 PREFIX qb: <http://purl.org/linked-data/cube#>
@@ -57,5 +58,5 @@ const VizContainer = ({ unemployementData }) => (
 );
 
 export default connector(VizContainer, {
-	loading: () => <Spinner text={'Loading'} />,
+	loading: () => <Spinner text={D.loading} />,
 });

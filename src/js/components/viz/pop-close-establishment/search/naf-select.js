@@ -3,6 +3,7 @@ import { sparqlConnect } from 'sparql-connect';
 import Spinner from 'js/components/shared/spinner';
 import ReactSelect from 'js/components/shared/react-select';
 import config from 'config';
+import D from 'js/i18n';
 
 const queryBuilder = () => `
           PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
@@ -26,9 +27,9 @@ const connector = sparqlConnect(queryBuilder, {
 
 const NafSelect = ({ nafList, nafSelect, handleChange }) => (
 	<div>
-		<h2 className="centered">Activity...</h2>
+		<h2 className="centered">{D.activityTitle}</h2>
 		<ReactSelect
-			placeholder="Select an activity..."
+			placeholder={D.selectActivity}
 			options={nafList}
 			value={nafSelect ? nafList.find(n => n.value === nafSelect) : ''}
 			onChange={handleChange}
@@ -38,5 +39,5 @@ const NafSelect = ({ nafList, nafSelect, handleChange }) => (
 );
 
 export default connector(NafSelect, {
-	loading: () => <Spinner text={'Loading'} />,
+	loading: () => <Spinner text={D.loading} />,
 });

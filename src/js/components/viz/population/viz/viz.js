@@ -3,6 +3,7 @@ import Tabs from 'js/components/shared/tabs';
 import DataTable from 'js/components/shared/table';
 import Hints from 'js/components/shared/hints';
 import { deleteLabelFromArray, extractLabel } from 'js/utils/array-utils';
+import D from 'js/i18n';
 
 export default ({ data }) => {
 	const xyData = data.map(({ date, population }) => ({
@@ -11,7 +12,7 @@ export default ({ data }) => {
 	}));
 	const tabs = [
 		{
-			label: 'Tableau',
+			label: D.tableTitle,
 			content: (
 				<DataTable
 					title={extractLabel(data)}
@@ -20,7 +21,7 @@ export default ({ data }) => {
 			),
 		},
 		{
-			label: 'Graphique',
+			label: D.chartTitle,
 			content: <Hints data={xyData} xName="Date" yName="Population" />,
 		},
 	];

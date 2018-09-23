@@ -1,5 +1,6 @@
 import React from 'react';
 import Map from './map';
+import D from 'js/i18n';
 
 export default ({ data }) => {
 	const mapData = data.map(({ label, activePop, unemployedPop, contours }) => ({
@@ -12,9 +13,8 @@ export default ({ data }) => {
 	}));
 
 	const legend = {
-		title: 'Unemployement',
-		body:
-			'Map represents unemployement rate of 15 old years and more by departement',
+		title: D.unemployement,
+		body: D.unemployementDescription,
 	};
 
 	return (

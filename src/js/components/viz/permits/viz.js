@@ -2,6 +2,7 @@ import React from 'react';
 import { Chart } from 'primereact/chart';
 import Select from 'js/components/shared/select';
 import { mapMyQuery } from './data-utils';
+import D from 'js/i18n';
 import './permits.css';
 
 class MyPage extends React.Component {
@@ -17,16 +18,13 @@ class MyPage extends React.Component {
 		return (
 			<React.Fragment>
 				<div className="centered">
-					<i>
-						Legal populations from id.insee.fr and building permits calculated
-						into data cube.
-					</i>
+					<i>{D.permitDescription}</i>
 				</div>
 				<div className="contenu">
 					<Select
 						col={4}
 						offset={4}
-						label="Change year..."
+						label={D.changeYear}
 						options={[
 							{ id: '2014', label: '2014' },
 							{ id: '2015', label: '2015' },

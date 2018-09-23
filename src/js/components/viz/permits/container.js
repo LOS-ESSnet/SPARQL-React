@@ -3,6 +3,7 @@ import { sparqlConnect } from 'sparql-connect';
 import Spinner from 'js/components/shared/spinner';
 import Viz from './viz';
 import config from 'config';
+import D from 'js/i18n';
 
 const queryBuilder = () => `
 PREFIX qb: <http://purl.org/linked-data/cube#>
@@ -46,5 +47,5 @@ const connector = sparqlConnect(queryBuilder, {
 });
 
 export default connector(Viz, {
-	loading: () => <Spinner text={'Loading...'} />,
+	loading: () => <Spinner text={D.loading} />,
 });

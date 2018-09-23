@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import DataTables from 'material-ui-datatables';
 // TODO : Fix issue with material-ui-datatables version
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import D from 'js/i18n';
 injectTapEventPlugin();
 
 class Table extends Component {
@@ -52,7 +53,7 @@ class Table extends Component {
 			<DataTables
 				title={title}
 				titleStyle={{ color: 'white' }}
-				filterHintText="Rechercher..."
+				filterHintText={D.search}
 				filterValue={filter}
 				height={'auto'}
 				selectable={false}

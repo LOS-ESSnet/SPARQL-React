@@ -2,6 +2,7 @@ import React from 'react';
 import { sparqlConnect } from 'sparql-connect';
 import Viz from './viz';
 import Spinner from 'js/components/shared/spinner';
+import D from 'js/i18n';
 
 const queryBuilder = area => `
   PREFIX idemo:<http://rdf.insee.fr/def/demo#>
@@ -26,5 +27,5 @@ const VizContainer = ({ areaPopulation }) => (
 );
 
 export default connector(VizContainer, {
-	loading: () => <Spinner text={'Loading'} />,
+	loading: () => <Spinner text={D.loading} />,
 });

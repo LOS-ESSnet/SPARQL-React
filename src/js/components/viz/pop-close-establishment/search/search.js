@@ -5,6 +5,7 @@ import NafSelect from './naf-select';
 import DepSelect from './dep-select';
 import Input from 'js/components/shared/input';
 import TownSelect from './town-select';
+import D from 'js/i18n';
 import './search.css';
 
 export default ({
@@ -36,7 +37,7 @@ export default ({
 				<div className="mui-col-md-6">
 					<Input
 						id="my-search"
-						label="Search in establishment name..."
+						label={D.searchEstablishment}
 						value={search}
 						onChange={e => handleChange(e, 'search')}
 						titleCenter={true}
@@ -69,7 +70,7 @@ export default ({
 const Warning = ({ nafItem, geoloc }) =>
 	isToDisable(nafItem, geoloc) ? null : (
 		<h3 className="centered">
-			<i>select at least a town or an activity and a departement</i>
+			<i>{D.searchCondition}</i>
 		</h3>
 	);
 

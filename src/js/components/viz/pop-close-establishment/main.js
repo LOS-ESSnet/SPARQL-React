@@ -4,12 +4,13 @@ import Search from './search';
 import EstablishmentSelect from './select-establishment';
 import Divider from 'js/components/shared/divider';
 import Container from './pop-container';
+import D from 'js/i18n';
 
 export default class Main extends Component {
 	constructor() {
 		super();
 		this.state = {
-			establishment: {},
+			establishment: '',
 			nafItem: '',
 			departement: '',
 			town: '',
@@ -21,7 +22,7 @@ export default class Main extends Component {
 		this.handleChange = (object, key) =>
 			this.setState({
 				[key]: object,
-				establishment: {},
+				establishment: '',
 				updateEstablishmentList: false,
 			});
 		this.clickSearch = e => {
@@ -70,9 +71,7 @@ export default class Main extends Component {
 						{Object.keys(establishment).length !== 0 && (
 							<React.Fragment>
 								<Divider />
-								<h2 className="centered">
-									Vary the diameter around the company!
-								</h2>
+								<h2 className="centered">{D.slideDistance}</h2>
 								<Slider
 									value={distance}
 									min={1}

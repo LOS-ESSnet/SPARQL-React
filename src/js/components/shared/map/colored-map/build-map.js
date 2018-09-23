@@ -1,6 +1,7 @@
 import React from 'react';
 import { fromJS } from 'immutable';
 import { defaultMapStyle, dataLayer } from './style.js';
+import D from 'js/i18n';
 
 export const buildClasses = (data, colors) => {
 	const values = data.map(d => d.myIndicator).sort((a, b) => a - b);
@@ -42,7 +43,7 @@ const getClass = (classes, value) => {
 
 export const buildGeoData = data => ({
 	type: 'FeatureCollection',
-	features: data.map(({ contours,...other }) => ({
+	features: data.map(({ contours, ...other }) => ({
 		geometry: contours,
 		properties: {
 			...other,
@@ -58,7 +59,7 @@ export const buildLegend = classes =>
 		let content;
 		if (i === 0) content = ` < ${c[0]}`;
 		else if (i === classes.length - 1) content = ` > ${classes[i - 1][0]}`;
-		else content = ` entre ${classes[i - 1][0]} et ${c[0]}`;
+		else content = ` ${D.between} ${classes[i - 1][0]} et ${c[0]}`;
 		return (
 			<p key={`legend-item-${i}`}>
 				{square(c[1])}

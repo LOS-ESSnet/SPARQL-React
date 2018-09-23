@@ -1,5 +1,6 @@
 import React from 'react';
 import Bubble from 'js/components/shared/bubble';
+import D from 'js/i18n';
 
 export default ({ data, labelModA, labelModB }) => {
 	const xyData = data.map(
@@ -13,8 +14,8 @@ export default ({ data, labelModA, labelModB }) => {
 	return (
 		<Bubble
 			data={xyData}
-			xName={`Part des " ${labelModA} "`}
-			yName={`Part des " ${labelModB} "`}
+			xName={`${D.partOf} " ${labelModA} "`}
+			yName={`${D.partOf} " ${labelModB} "`}
 			sizeName="Population"
 		/>
 	);

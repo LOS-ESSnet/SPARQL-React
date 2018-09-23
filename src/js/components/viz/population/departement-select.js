@@ -3,6 +3,7 @@ import Select from 'js/components/shared/select';
 import Spinner from 'js/components/shared/spinner';
 import VizCommunes from './container-communes';
 import departementsConnector from 'js/components/connectors/departements';
+import D from 'js/i18n';
 
 class DepartementSelect extends Component {
 	constructor() {
@@ -19,7 +20,7 @@ class DepartementSelect extends Component {
 				<div className="mui-row loading-row">
 					<div className="mui-col-md-5 mui-col-md-offset-1">
 						<Select
-							label="Commune into departement..."
+							label={D.municipalityIntoDepartment}
 							options={departements}
 							value={departement}
 							onChange={this.handleChangeType}
@@ -33,5 +34,5 @@ class DepartementSelect extends Component {
 }
 
 export default departementsConnector(DepartementSelect, {
-	loading: () => <Spinner text={'Loading...'} />,
+	loading: () => <Spinner text={D.loading} />,
 });

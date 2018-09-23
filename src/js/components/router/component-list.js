@@ -1,39 +1,40 @@
 import React from 'react';
 import * as C from './components';
+import D from 'js/i18n';
 
 export const items = [
-	{ route: `/`, title: 'Summary', body: <C.Home /> },
-	{ title: 'Establishments and populations', type: 'SubHeader' },
+	{ route: `/`, title: D.summary, body: <C.Home /> },
+	{ title: D.popEtabSubheader, type: 'SubHeader' },
 	{
 		route: `/pop-establishment`,
-		title: `Population near an establishment`,
+		title: D.popEtabTitle,
 		body: <C.Pop />,
 	},
-	{ title: 'Permits', type: 'SubHeader' },
+	{ title: D.permitsSubheader, type: 'SubHeader' },
 	{
 		route: `/permits`,
-		title: '" Île de France " departements',
+		title: D.permitsTitle,
 		body: <C.Permits />,
 	},
 	{ title: 'Pop 5', type: 'SubHeader' },
 	{
 		route: `/population`,
-		title: '15 year or more population',
+		title: D.pop5Title,
 		body: <C.Population />,
 	},
 	{
 		route: `/population-by-dimension`,
-		title: 'Departemental population by dimensions',
+		title: D.popDimensionTitle,
 		body: <C.PopulationByDimensions />,
 	},
 	{
 		route: `/population-departemental-comparisons`,
-		title: 'Departemental population structure comparisions',
+		title: D.popComparisonTitle,
 		body: <C.PopulationDepCompare />,
 	},
 	{
 		route: `/unemployement-map`,
-		title: 'Unemployement map',
+		title: D.unemployementTitle,
 		body: <C.UnemployementMap />,
 	},
 ];

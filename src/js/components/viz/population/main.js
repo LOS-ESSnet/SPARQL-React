@@ -4,6 +4,7 @@ import ContainerRegions from './container-regions';
 import ContainerDepartements from './container-departements';
 import DepartementSelect from './departement-select';
 import { areas } from 'js/utils/areas';
+import D from 'js/i18n';
 
 class Main extends Component {
 	constructor() {
@@ -19,7 +20,7 @@ class Main extends Component {
 				<div className="mui-row loading-row">
 					<div className="mui-col-md-5">
 						<Select
-							label="Select a geography..."
+							label={D.selectGeography}
 							options={areas}
 							value={type}
 							onChange={this.handleChangeType}

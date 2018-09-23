@@ -1,6 +1,7 @@
 import React from 'react';
 import ColoredMap from 'js/components/shared/map/colored-map';
 import { wktToGeojson } from 'js/utils/map/wkt-to-geojson';
+import D from 'js/i18n';
 
 export default ({ data, legend }) => {
 	const colors = [
@@ -15,14 +16,14 @@ export default ({ data, legend }) => {
 		'#D3195C',
 		'#D00B51',
 	];
-	const geoJsonData = data.map(({ contours,...d }) => ({
+	const geoJsonData = data.map(({ contours, ...d }) => ({
 		contours: wktToGeojson(contours),
 		...d,
 	}));
 
 	const contentArray = [
-		['Departement', 'label', ''],
-		['Unemployment', 'value', '%'],
+		[D.department, 'label', ''],
+		[D.unemployementTitle, 'value', '%'],
 	];
 
 	return (

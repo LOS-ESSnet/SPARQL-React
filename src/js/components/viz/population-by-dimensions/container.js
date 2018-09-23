@@ -2,6 +2,7 @@ import React from 'react';
 import { sparqlConnect } from 'sparql-connect';
 import Viz from './viz';
 import Spinner from 'js/components/shared/spinner';
+import D from 'js/i18n';
 
 const queryBuilder = (modA, modB) => `
 PREFIX qb: <http://purl.org/linked-data/cube#>
@@ -70,5 +71,5 @@ const VizContainer = ({ depPopByDimensions, labelModA, labelModB }) => (
 );
 
 export default connector(VizContainer, {
-	loading: () => <Spinner text={'Loading'} />,
+	loading: () => <Spinner text={D.loading} />,
 });

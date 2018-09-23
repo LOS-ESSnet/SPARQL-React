@@ -3,6 +3,7 @@ import Select from 'js/components/shared/select';
 import Spinner from 'js/components/shared/spinner';
 import dimensionsConnector from 'js/components/connectors/dimensions';
 import { filterDimensions } from 'js/utils/filter-dimensions';
+import D from 'js/i18n';
 
 const DimensionsSelect = ({
 	dimensions,
@@ -19,9 +20,7 @@ const DimensionsSelect = ({
 	const selectAClass = hasOneDimensions
 		? 'mui-col-md-4 mui-col-md-offset-4'
 		: 'mui-col-md-4 mui-col-md-offset-1';
-	const labelA = hasOneDimensions
-		? 'Fix your dimension...'
-		: 'Fix your first dimension...';
+	const labelA = hasOneDimensions ? D.fixDimension : D.fixFirstDimension;
 	return (
 		<div className="mui-row loading-row">
 			<div className={selectAClass}>
@@ -35,7 +34,7 @@ const DimensionsSelect = ({
 			{!hasOneDimensions && (
 				<div className="mui-col-md-4 mui-col-md-offset-2">
 					<Select
-						label="Fix your second dimension..."
+						label={D.fixSecondDimension}
 						options={filteredDimensionB}
 						value={dimB}
 						onChange={handleChangeDimB}
@@ -47,5 +46,5 @@ const DimensionsSelect = ({
 };
 
 export default dimensionsConnector(DimensionsSelect, {
-	loading: () => <Spinner text={'Loading...'} />,
+	loading: () => <Spinner text={D.loading} />,
 });

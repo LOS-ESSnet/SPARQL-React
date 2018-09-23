@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
+import D from 'js/i18n';
 import './select-rmes.css';
 
 function SelectRmes({
@@ -24,7 +25,7 @@ function SelectRmes({
 			onChange={onChangeSelect}
 			isClearable={isClearable}
 			searchable={searchable}
-			noResultsText="No results"
+			noResultsText={D.noResult}
 			multi={multi}
 			disabled={disabled}
 		/>
