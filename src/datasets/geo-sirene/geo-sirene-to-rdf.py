@@ -9,6 +9,7 @@ predicate_long = "geo-pos:long"
 predicate_lat = "geo-pos:lat"
 predicate_purpose = "org:purpose"
 predicate_located = "gn:locatedIn"
+predicate_eff = "mes:effectif"
 
 """Define csv headers"""
 SIREN = "SIREN"
@@ -19,6 +20,7 @@ LONGITUDE = "longitude"
 LATITUDE = "latitude"
 DEP = "DEPET"
 COM = "COMET"
+EFF = "EFENCENT"
 
 """"Define prefixes"""
 BASE_URI_SIRET = "http://id.insee.fr/sirene/siret/"
@@ -46,6 +48,26 @@ def create_point(siret, lat, long):
     point += "%s geo:asWKT \"POINT(%s %s)\"^^geo:wktLiteral .\n"%(point_url, long, lat)
     return point
 
+def create_effectif_label(eff):
+    if (eff == 'NN'):
+        return "0 salarié ou effectif inconnu"
+    eff = int(eff)
+    if (eff >= 500):
+        return "500 salariés ou plus"
+    if (eff >= 200):
+        return "200 à 499 salariés"
+    if (eff >= 100):
+        return "100 à 199 salariés"
+    if (eff >= 50):
+        return "50 à 99 salariés"
+    if (eff >= 20):
+        return "10 à 49 salariés"
+    if (eff >= 10):
+        return "10 à 49 salariés"
+    if (eff >= 1):
+        return "1 à 9 salariés"
+    return "0 salarié ou effectif inconnu"
+
 """Build ttl file from csv"""
 with open('geo-sirene.ttl', 'w', encoding="utf8") as output:
     """Write prefixes"""
@@ -56,6 +78,7 @@ with open('geo-sirene.ttl', 'w', encoding="utf8") as output:
     output.write("@prefix  geo: <http://www.opengis.net/ont/geosparql#> .\n")
     output.write("@prefix  org: <http://www.w3.org/ns/org#> .\n")
     output.write("@prefix  gn: <http://www.geonames.org/ontology#> .\n")
+    output.write("@prefix  mes: <http://id.insee.fr/sirene/etablissement/> .\n")
     output.write("\n")
 
     with open('geo_sirene.csv', 'r', encoding="utf8") as csvfile:
@@ -72,6 +95,7 @@ with open('geo-sirene.ttl', 'w', encoding="utf8") as output:
         indice_APEN =  headers.index(APEN)
         indice_DEP =  headers.index(DEP)
         indice_COM =  headers.index(COM)
+        indice_EFF =  headers.index(EFF)
 
         i=0
         """Get lines to build resources writing triples"""
@@ -89,6 +113,7 @@ with open('geo-sirene.ttl', 'w', encoding="utf8") as output:
             output.write(create_line_url(predicate_located,BASE_URI_COM+com))
             output.write(create_line_float(predicate_long,row[indice_LONGITUDE]))
             output.write(create_line_float(predicate_lat,row[indice_LATITUDE]))
+            output.write(create_line_string(predicate_eff,create_effectif_label(row[indice_EFF])))
             output.write(create_point(siret, row[indice_LATITUDE], row[indice_LONGITUDE] ))
             output.write("\n")
 
