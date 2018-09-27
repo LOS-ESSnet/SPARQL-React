@@ -108,7 +108,7 @@ const dictionary = {
 		fr: (sommePop, distance, labelEntreprise) =>
 			`Il y a ${sommePop} habitants à ${distance} km autour de " ${labelEntreprise} "`,
 		en: (sommePop, distance, labelEntreprise) =>
-			`There are ${sommePop} inhabitants à ${distance} km around " ${labelEntreprise} "`,
+			`There are ${sommePop} inhabitants ${distance} km around " ${labelEntreprise} "`,
 	},
 	permitDescription: {
 		fr:
