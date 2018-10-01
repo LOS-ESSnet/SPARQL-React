@@ -10,6 +10,11 @@ export const items = [
 		title: D.popEtabTitle,
 		body: <C.Pop />,
 	},
+	{
+		route: `/pop-establishments`,
+		title: D.popEtabsTitle,
+		body: <C.PopEtabs />,
+	},
 	{ title: D.permitsSubheader, type: 'SubHeader' },
 	{
 		route: `/permits`,
