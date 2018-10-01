@@ -28,18 +28,19 @@ export default ({ data, latitude, longitude, zoom }) => {
 
 	const contentArray = [['Population', 'value', '']];
 
-	const geoJsonData = mapData.map(({ contours,...d }) => ({
+	const geoJsonData = mapData.map(({ contours, ...d }) => ({
 		contours: wktToGeojson(contours),
 		...d,
 	}));
+
+	const coords = [{ latitude, longitude }];
 
 	return (
 		<ColoredMap
 			data={geoJsonData}
 			legend={legend}
 			colors={colors}
-			longitude={longitude}
-			latitude={latitude}
+			coords={coords}
 			zoom={zoom}
 			hasPoint={true}
 			contentArray={contentArray}

@@ -3,6 +3,7 @@ import { sparqlConnect } from 'sparql-connect';
 import Spinner from 'js/components/shared/spinner';
 import ReactSelect from 'js/components/shared/react-select';
 import config from 'config';
+import { prettyNumber } from 'js/utils/pretty-number';
 import D from 'js/i18n';
 
 const nafFilter = nafItem => (nafItem ? `?e org:purpose <${nafItem}> .` : '');
@@ -49,9 +50,9 @@ const EntSelect = ({ establishmentList, establishment, handleChange }) => {
 	return (
 		<div className="mui-row">
 			<div className="mui-col-md-6 mui-col-md-offset-3">
-				<h2 className="centered">{`${
-					D.establishmentList
-				} (${size} ${res})`}</h2>
+				<h2 className="centered">{`${D.establishmentList} (${prettyNumber(
+					size
+				)} ${res})`}</h2>
 				<ReactSelect
 					placeholder={D.selectEstablishment}
 					options={establishmentList}
