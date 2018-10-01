@@ -9,7 +9,7 @@ import { TOKEN } from 'config';
 export default class App extends Component {
 	constructor(props) {
 		super();
-		const { data, colors, viewport, latitude, longitude, zoom } = props;
+		const { data, colors, viewport, coords, zoom } = props;
 		const classes = buildClasses(data, colors);
 		this.state = {
 			classes,
@@ -17,9 +17,13 @@ export default class App extends Component {
 			hoveredFeature: null,
 			viewport: Object.assign(
 				{
-					latitude: Number.parseFloat(latitude) || 46.3333,
-					longitude: Number.parseFloat(longitude) || 2.6,
-					zoom: Number.parseInt(zoom, 10) || 4.5,
+					latitude:
+						coords.length === 1
+							? Number.parseFloat(coords[0].latitude)
+							: 46.3333,
+					longitude:
+						coords.length === 1 ? Number.parseFloat(coords[0].longitude) : 2.6,
+					zoom: coords.length === 1 ? Number.parseInt(zoom, 10) : 4.5,
 					bearing: 0,
 					pitch: 0,
 					width: 500,
@@ -75,7 +79,7 @@ export default class App extends Component {
 
 	render() {
 		const { viewport, mapStyle, hoveredFeature, x, y, classes } = this.state;
-		const { legend, latitude, longitude, hasPoint, contentArray } = this.props;
+		const { legend, coords, hasPoint, contentArray } = this.props;
 		return (
 			<MapGL
 				{...viewport}
@@ -84,15 +88,16 @@ export default class App extends Component {
 				onHover={this._onHover}
 				mapboxApiAccessToken={TOKEN}
 			>
-				{hasPoint && (
-					<Marker
-						key="1"
-						longitude={Number.parseFloat(longitude)}
-						latitude={Number.parseFloat(latitude)}
-					>
-						<CityPin size="20" />
-					</Marker>
-				)}
+				{hasPoint &&
+					coords.map(({ longitude, latitude }, i) => (
+						<Marker
+							key={i}
+							longitude={Number.parseFloat(longitude)}
+							latitude={Number.parseFloat(latitude)}
+						>
+							<CityPin size="20" />
+						</Marker>
+					))}
 				<Legend legend={legend} classes={classes} />
 				{contentArray.length !== 0 &&
 					hoveredFeature && (
