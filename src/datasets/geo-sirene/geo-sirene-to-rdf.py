@@ -20,7 +20,7 @@ LONGITUDE = "longitude"
 LATITUDE = "latitude"
 DEP = "DEPET"
 COM = "COMET"
-EFF = "EFENCENT"
+EFF = "EFETCENT"
 
 """"Define prefixes"""
 BASE_URI_SIRET = "http://id.insee.fr/sirene/siret/"
