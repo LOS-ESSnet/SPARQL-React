@@ -8,11 +8,15 @@ const dictionary = {
 		en: 'Establishments and populations',
 	},
 	popEtabTitle: {
-		fr: `Population à proximité des établissements`,
+		fr: `Population à proximité d'un établissement`,
 		en: `Population near an establishment`,
 	},
+	popEtabsTitle: {
+		fr: `Population à proximité des établissements`,
+		en: `Population close to the establishments`,
+	},
 	permitsSubheader: {
-		fr: 'Permits de construire et populations',
+		fr: 'Permis de construire et populations',
 		en: 'Building permits and populations',
 	},
 	permitsTitle: {
@@ -144,6 +148,14 @@ const dictionary = {
 		fr: 'Sélectionner une activité ...',
 		en: 'Select an activity...',
 	},
+	distanceTitle: {
+		fr: "Eloignement de l'établissement ...",
+		en: 'Distance from the establishment...',
+	},
+	selectDistance: {
+		fr: 'Sélectionner une distance ...',
+		en: 'Select a distance...',
+	},
 	searchEstablishment: {
 		fr: 'Filtrer les établissements par nom ...',
 		en: 'Search in establishment name...',
@@ -151,6 +163,11 @@ const dictionary = {
 	searchCondition: {
 		fr: 'sélectionner au moins une commune ou une activité et un département',
 		en: 'select at least a municipality or an activity and a department',
+	},
+	searchSimpleCondition: {
+		fr:
+			"sélectionner au moins une distance et une tranche d'effectif ou une activité",
+		en: 'select at least a distance and an effectif slice or an activity',
 	},
 	municipalityTitle: {
 		fr: 'Commune ...',
@@ -185,7 +202,7 @@ const dictionary = {
 		en: 'Chart',
 	},
 	municipalityIntoDepartment: {
-		fr: 'Communes dans le département...',
+		fr: 'Communes dans le département ...',
 		en: 'Municipalities into department...',
 	},
 	selectGeography: {
@@ -195,6 +212,19 @@ const dictionary = {
 	partOf: {
 		fr: 'Part des',
 		en: 'Part of',
+	},
+	establishmentSize: {
+		fr: "Effectif de l'établissement ...",
+		en: 'Staff of the establishment...',
+	},
+	selectSize: {
+		fr: "Sélectionner une tranche d'effectif établissement ...",
+		en: 'Select a slice...',
+	},
+	tooMuchEstablishment: {
+		fr:
+			'Votre recherche comporte plus de 1 000 établissement. Veuiller la préciser en filtrant plus précisément',
+		en: 'Your search is too large. Please specify more using filters',
 	},
 };
 
