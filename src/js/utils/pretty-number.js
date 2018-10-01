@@ -1,2 +1,2 @@
 export const prettyNumber = num =>
-	num ? num.replace(/\B(?=(\d{3})+(?!\d))/g, ' ') : '';
+	num !== undefined ? num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') : '';

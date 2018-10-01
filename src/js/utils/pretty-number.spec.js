@@ -7,6 +7,12 @@ describe('prettyNumber', () => {
 	it('empty param should return an empty string', () => {
 		expect(prettyNumber('')).toEqual('');
 	});
+	it('number param should return prettier string', () => {
+		expect(prettyNumber(1234)).toEqual('1 234');
+	});
+	it('0 param should return prettier "0"', () => {
+		expect(prettyNumber(0)).toEqual('0');
+	});
 	it('should return the same string', () => {
 		expect(prettyNumber('12')).toEqual('12');
 	});
