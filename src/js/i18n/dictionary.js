@@ -12,8 +12,8 @@ const dictionary = {
 		en: `Population near an establishment`,
 	},
 	popEtabsTitle: {
-		fr: `Population à proximité des établissements`,
-		en: `Population close to the establishments`,
+		fr: `Population à proximité d'un type d'établissement`,
+		en: `Population near a type of establishment`,
 	},
 	permitsSubheader: {
 		fr: 'Permis de construire et populations',

@@ -73,8 +73,10 @@ const NbEstab = ({
 				</React.Fragment>
 			)}
 			{!printMap && (
-				<div className="centered">
-					<h1>{D.tooMuchEstablishment}</h1>
+				<div className="centered pink">
+					<h2>
+						<b>{D.tooMuchEstablishment}</b>
+					</h2>
 				</div>
 			)}
 		</React.Fragment>
