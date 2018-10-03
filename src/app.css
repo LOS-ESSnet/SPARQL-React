@@ -34,3 +34,9 @@
 .pink {
 	color: #ee3467;
 }
+
+.svg-pointer {
+	width: 20px;
+	height: 30px;
+	transform: translate(-10px, -30px);
+}
