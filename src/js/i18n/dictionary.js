@@ -48,6 +48,10 @@ const dictionary = {
 		en:
 			'Map represents unemployement rate of 15 old years and more by department',
 	},
+	establishment: {
+		fr: 'établissement',
+		en: 'establishment',
+	},
 	loading: {
 		fr: 'Chargement en cours ...',
 		en: 'Loading...',
@@ -222,9 +226,28 @@ const dictionary = {
 		en: 'Select a slice...',
 	},
 	tooMuchEstablishment: {
-		fr:
-			'Votre recherche comporte plus de 1 000 établissement. Veuiller la préciser en filtrant plus précisément',
-		en: 'Your search is too large. Please specify more using filters',
+		fr: nb =>
+			`Votre recherche comporte plus de 1 000 établissements (${nb}). Veuiller la préciser en filtrant plus précisément`,
+		en: nb =>
+			`Your search returns more than 1 000 establishments (${nb}). Please specify more using filters`,
+	},
+	tooMuchDistance100: {
+		fr: nb =>
+			`Votre recherche comporte plus de 100 établissements (${nb}). Veuiller sélectionner une distance inférieure à 3 km`,
+		en: nb =>
+			`Your search returns more than 100 establishments (${nb}). Please select a distance lower than 3 km`,
+	},
+	tooMuchDistance50: {
+		fr: nb =>
+			`Votre recherche comporte plus de 50 établissements (${nb}). Veuiller sélectionner une distance inférieure à 5 km`,
+		en: nb =>
+			`Your search returns more than 50 establishments (${nb}). Please select a distance lower than 5 km`,
+	},
+	tooMuchDistance30: {
+		fr: nb =>
+			`Votre recherche comporte plus de 30 établissements (${nb}). Veuiller sélectionner une distance inférieure à 10 km`,
+		en: nb =>
+			`Your search returns more than 30 establishments (${nb}). Please select a distance lower than 10 km`,
 	},
 };
 
