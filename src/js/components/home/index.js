@@ -12,9 +12,9 @@ export default () => (
 						<Link to={route}>{title}</Link>
 					</li>
 				) : (
-					<React.Fragment>
+					<React.Fragment key={i}>
 						<br />
-						<h2 key={i} className="item-title centered">
+						<h2 className="item-title centered">
 							<i>{title}</i>
 						</h2>
 					</React.Fragment>
