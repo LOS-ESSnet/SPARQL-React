@@ -19,16 +19,21 @@ const queryBuilder = (nafItem, establishmentSize, department, distance) => `
       PREFIX geo-pos: <http://www.w3.org/2003/01/geo/wgs84_pos#>
       PREFIX gn: <http://www.geonames.org/ontology#>
       PREFIX omgeo: <http://www.ontotext.com/owlim/geo#>
+			PREFIX mes: <http://id.insee.fr/sirene/etablissement/>
+			PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
-      SELECT DISTINCT ?latitude ?longitude WHERE {
+      SELECT DISTINCT ?latitude ?longitude ?label ?workForce WHERE {
 				SERVICE <${config.SIRENE_ENDPOINT}> {
             ?value a org:OrganizationalUnit ;
+							 rdfs:label ?label ;
                geo-pos:long ?longitude ;
                geo-pos:lat ?latitude .
-               ${nafFilter(nafItem)}
-               ${estabSizeFilter(establishmentSize)}
-							 ${depFilter(department)}
-               FILTER(STR(?longitude) != '')
+		#					 mes:effectif ?effURI .
+		#				?effURI skos:prefLabel ?workForce .
+            ${nafFilter(nafItem)}
+            ${estabSizeFilter(establishmentSize)}
+					  ${depFilter(department)}
+            FILTER(STR(?longitude) != '')
 				}
       }
 `;
@@ -41,7 +46,7 @@ const pointConnector = sparqlConnect(queryBuilder, {
 const connector = sparqlCombine(pointConnector, polygonConnector);
 
 const MapContainer = ({ mapFr, polygons }) => (
-	<Map coords={mapFr} polygons={polygons} />
+	<Map pointCoords={mapFr} polygons={polygons} />
 );
 
 export default connector(MapContainer, {

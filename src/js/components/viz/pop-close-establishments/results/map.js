@@ -2,7 +2,7 @@ import React from 'react';
 import ColoredMap from 'js/components/shared/map/colored-map';
 import { wktToGeojson } from 'js/utils/map/wkt-to-geojson';
 
-export default ({ coords, polygons }) => {
+export default ({ pointCoords, polygons }) => {
 	const mapData = polygons.map(({ population, polygon }) => ({
 		label: population,
 		myIndicator: Number.parseFloat(population).toFixed(1),
@@ -28,6 +28,11 @@ export default ({ coords, polygons }) => {
 
 	const contentArray = [['Population', 'value', '']];
 
+	const pointContentArray = [
+		['Label', 'label', ''],
+		['Effectif', 'workForce', ''],
+	];
+
 	const geoJsonData = mapData.map(({ contours, ...d }) => ({
 		contours: wktToGeojson(contours),
 		...d,
@@ -38,8 +43,8 @@ export default ({ coords, polygons }) => {
 			data={geoJsonData}
 			legend={legend}
 			colors={colors}
-			coords={coords}
-			hasPoint={true}
+			pointCoords={pointCoords}
+			pointContentArray={pointContentArray}
 			contentArray={contentArray}
 		/>
 	);

@@ -46,18 +46,18 @@ const NbEstab = ({
 	distance,
 }) => {
 	const size = parseInt(nbEstab, 10);
-	const printMap = size !== 0 && size <= 1000;
+	const warning = buildWarning(parseInt(distance, 10), size);
+	console.log(warning);
+	const res = size > 1 ? `${D.establishment}s` : `${D.establishment}`;
 	return (
 		<React.Fragment>
-			<div className="mui-row">
-				<div className="mui-col-md-6 mui-col-md-offset-3">
-					<h2 className="centered">{`${prettyNumber(
-						nbEstab
-					)} establishments`}</h2>
-				</div>
-			</div>
-			{printMap && (
+			{!warning && (
 				<React.Fragment>
+					<div className="mui-row">
+						<div className="mui-col-md-6 mui-col-md-offset-3">
+							<h2 className="centered">{`${prettyNumber(nbEstab)} ${res}`}</h2>
+						</div>
+					</div>
 					<Population
 						nafItem={nafItem}
 						establishmentSize={establishmentSize}
@@ -72,15 +72,26 @@ const NbEstab = ({
 					/>
 				</React.Fragment>
 			)}
-			{!printMap && (
+			{warning && (
 				<div className="centered pink">
 					<h2>
-						<b>{D.tooMuchEstablishment}</b>
+						<b>{warning}</b>
 					</h2>
 				</div>
 			)}
 		</React.Fragment>
 	);
+};
+
+const buildWarning = (distance, nbEstab) => {
+	const strNbEstab = prettyNumber(nbEstab);
+	if (nbEstab === 0) return D.noResult;
+	else if (nbEstab > 1000) return D.tooMuchEstablishment(strNbEstab);
+	else if (nbEstab > 100 && distance > 2)
+		return D.tooMuchDistance100(strNbEstab);
+	else if (nbEstab > 50 && distance > 3) return D.tooMuchDistance50(strNbEstab);
+	else if (nbEstab > 30 && distance > 5) return D.tooMuchDistance30(strNbEstab);
+	else return '';
 };
 
 export default connector(NbEstab, {

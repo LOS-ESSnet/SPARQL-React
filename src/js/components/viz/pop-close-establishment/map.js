@@ -33,16 +33,15 @@ export default ({ data, latitude, longitude, zoom }) => {
 		...d,
 	}));
 
-	const coords = [{ latitude, longitude }];
+	const pointCoords = [{ latitude, longitude }];
 
 	return (
 		<ColoredMap
 			data={geoJsonData}
 			legend={legend}
 			colors={colors}
-			coords={coords}
+			pointCoords={pointCoords}
 			zoom={zoom}
-			hasPoint={true}
 			contentArray={contentArray}
 		/>
 	);
