@@ -1,0 +1,12 @@
+.tooltip-point {
+	position: absolute;
+	margin: 8px;
+	padding: 4px;
+	background: rgba(0, 0, 0, 0.8);
+	color: #fff;
+	min-width: 300px;
+	max-width: 600px;
+	font-size: 14px;
+	z-index: 9;
+	pointer-events: none;
+}

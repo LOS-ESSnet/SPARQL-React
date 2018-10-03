@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import MapGL, { Marker } from 'react-map-gl';
+import MapGL from 'react-map-gl';
+import Points from './points';
 import Legend from './legend';
 import Tooltip from './tooltip';
 import { buildData, buildClasses } from './build-map';
-import CityPin from './point';
 import { TOKEN } from 'config';
 
 export default class App extends Component {
 	constructor(props) {
 		super();
-		const { data, colors, viewport, coords, zoom } = props;
+		const { data, colors, viewport, pointCoords, zoom } = props;
 		const classes = buildClasses(data, colors);
 		this.state = {
 			classes,
@@ -18,12 +18,17 @@ export default class App extends Component {
 			viewport: Object.assign(
 				{
 					latitude:
-						coords.length === 1
-							? Number.parseFloat(coords[0].latitude)
+						pointCoords && pointCoords.length === 1
+							? Number.parseFloat(pointCoords[0].latitude)
 							: 46.3333,
 					longitude:
-						coords.length === 1 ? Number.parseFloat(coords[0].longitude) : 2.6,
-					zoom: coords.length === 1 ? Number.parseInt(zoom, 10) : 4.5,
+						pointCoords && pointCoords.length === 1
+							? Number.parseFloat(pointCoords[0].longitude)
+							: 2.6,
+					zoom:
+						pointCoords && pointCoords.length === 1
+							? Number.parseInt(zoom, 10)
+							: 4.5,
 					bearing: 0,
 					pitch: 0,
 					width: 500,
@@ -79,7 +84,7 @@ export default class App extends Component {
 
 	render() {
 		const { viewport, mapStyle, hoveredFeature, x, y, classes } = this.state;
-		const { legend, coords, hasPoint, contentArray } = this.props;
+		const { legend, contentArray, pointCoords, pointContentArray } = this.props;
 		return (
 			<MapGL
 				{...viewport}
@@ -88,16 +93,13 @@ export default class App extends Component {
 				onHover={this._onHover}
 				mapboxApiAccessToken={TOKEN}
 			>
-				{hasPoint &&
-					coords.map(({ longitude, latitude }, i) => (
-						<Marker
-							key={i}
-							longitude={Number.parseFloat(longitude)}
-							latitude={Number.parseFloat(latitude)}
-						>
-							<CityPin size="20" />
-						</Marker>
-					))}
+				{pointCoords &&
+					pointCoords.length > 0 && (
+						<Points
+							pointCoords={pointCoords}
+							pointContentArray={pointContentArray}
+						/>
+					)}
 				<Legend legend={legend} classes={classes} />
 				{contentArray.length !== 0 &&
 					hoveredFeature && (
