@@ -1,4 +1,4 @@
-const MAIN_ENDPOINT = 'http://SERVER/repositories';
+const MAIN_ENDPOINT = 'http://graphdb.linked-open-statistics.org/repositories';
 
 export default {
 	POP5_ENDPOINT: `${MAIN_ENDPOINT}/pop5`,

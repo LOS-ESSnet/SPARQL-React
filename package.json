@@ -8,6 +8,7 @@
 		"type": "git",
 		"url": "https://github.com/LOS-ESSnet/SPARQL-React.git"
 	},
+	"homepage": "http://linked-open-statistics.org/plosh/sparql-react-demo",
 	"dependencies": {
 		"babel-polyfill": "^6.26.0",
 		"chart.js": "^2.7.2",
