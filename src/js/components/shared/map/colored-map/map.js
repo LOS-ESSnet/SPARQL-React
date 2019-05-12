@@ -20,15 +20,12 @@ export default class App extends Component {
 					latitude:
 						pointCoords && pointCoords.length === 1
 							? Number.parseFloat(pointCoords[0].latitude)
-							: 46.3333,
+							: 47,
 					longitude:
 						pointCoords && pointCoords.length === 1
 							? Number.parseFloat(pointCoords[0].longitude)
-							: 2.6,
-					zoom:
-						pointCoords && pointCoords.length === 1
-							? Number.parseInt(zoom, 10)
-							: 4.5,
+							: 6.14,
+					zoom: zoom ? Number.parseFloat(zoom, 10) : 4.5,
 					bearing: 0,
 					pitch: 0,
 					width: 500,
@@ -64,8 +61,8 @@ export default class App extends Component {
 		this.setState({
 			viewport: {
 				...this.state.viewport,
-				width: window.innerWidth * 0.8,
-				height: window.innerHeight * 0.8,
+				width: window.innerWidth,
+				height: window.innerHeight * 0.7,
 			},
 		});
 	};
@@ -100,7 +97,7 @@ export default class App extends Component {
 							pointContentArray={pointContentArray}
 						/>
 					)}
-				<Legend legend={legend} classes={classes} />
+				{legend && <Legend legend={legend} classes={classes} />}
 				{contentArray.length !== 0 &&
 					hoveredFeature && (
 						<Tooltip

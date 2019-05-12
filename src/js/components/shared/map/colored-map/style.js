@@ -12,7 +12,7 @@ export const dataLayer = classes =>
 				property: 'myClass',
 				stops: classes.map((c, i) => [i, c[1]]),
 			},
-			'fill-opacity': 0.7,
+			'fill-opacity': 0.5,
 		},
 	});
 

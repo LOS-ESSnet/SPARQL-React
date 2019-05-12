@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import DataTables from 'material-ui-datatables';
-// TODO : Fix issue with material-ui-datatables version
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import D from 'js/i18n';
-injectTapEventPlugin();
 
 class Table extends Component {
 	constructor(props) {
@@ -42,11 +39,10 @@ class Table extends Component {
 				.includes(filter.toLowerCase().replace(/\s/g, ''))
 		);
 		if (order)
-			filteredData.sort(
-				(a, b) =>
-					order.order === 'asc'
-						? a[order.key] - b[order.key]
-						: b[order.key] - a[order.key]
+			filteredData.sort((a, b) =>
+				order.order === 'asc'
+					? a[order.key] - b[order.key]
+					: b[order.key] - a[order.key]
 			);
 		const pageData = filteredData.slice((page - 1) * rowSize, page * rowSize);
 		return (
