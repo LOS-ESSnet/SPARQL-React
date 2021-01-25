@@ -7,22 +7,26 @@ import D from 'js/i18n';
 
 const queryBuilder = departement => `
           PREFIX igeo:<http://rdf.insee.fr/def/geo#>
+		  PREFIX owl:<http://www.w3.org/2002/07/owl#>
+					
           SELECT ?value ?label WHERE {
-            SERVICE <${config.INSEE_ENDPOINT}> {
-          	?town a igeo:Commune .
-            ?town igeo:subdivisionDe <${departement}> .
-          	?town igeo:codeINSEE ?codeTown .
-          	?town igeo:nom ?labelTown .
-            OPTIONAL {?town igeo:subdivision ?arr .
-                      ?arr igeo:nom ?labelArr .
-                      ?arr igeo:codeINSEE ?codeArr .
-              FILTER(REGEX(STR(?arr),'/arrondissementMunicipal/'))} .
-          	FILTER(lang(?lab) = 'fr') .
-            BIND(IF(BOUND (?arr), ?arr, ?town ) as ?value)
-            BIND(IF(BOUND (?codeArr), ?codeArr, ?codeTown ) as ?code)
-            BIND(IF(BOUND (?labelArr), ?labelArr, ?labelTown ) as ?lab)
-            BIND(concat(STR(?code)," - ",STR(?lab)) as ?label)
-          }
+			SERVICE <${config.INSEE_ENDPOINT}> {
+				?dep owl:sameAs <${departement}> . 
+				?com igeo:subdivisionDirecteDe* ?dep .
+				?com a igeo:Commune .
+				?com igeo:codeINSEE ?codeTown .
+				?com igeo:nom ?labelTown .
+				?com owl:sameAs ?town .
+				OPTIONAL {?com igeo:subdivision ?arr .
+						?arr igeo:nom ?labelArr .
+						?arr igeo:codeINSEE ?codeArr .
+				FILTER(REGEX(STR(?arr),'/arrondissementMunicipal/'))} .
+				
+				BIND(IF(BOUND (?arr), ?arr, ?town ) as ?value)
+				BIND(IF(BOUND (?codeArr), ?codeArr, ?codeTown ) as ?code)
+				BIND(IF(BOUND (?labelArr), ?labelArr, ?labelTown ) as ?lab)
+				BIND(concat(STR(?code)," - ",STR(?lab)) as ?label)
+			}         
         }
         order by ?code
 `;

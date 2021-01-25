@@ -8,7 +8,6 @@
 		"type": "git",
 		"url": "https://github.com/LOS-ESSnet/SPARQL-React.git"
 	},
-	"homepage": "http://linked-open-statistics.org/plosh/sparql-react-demo",
 	"dependencies": {
 		"babel-polyfill": "^6.26.0",
 		"chart.js": "^2.7.3",
@@ -33,6 +32,7 @@
 		"redux": "^4.0.0",
 		"redux-logger": "^3.0.6",
 		"redux-thunk": "^2.2.0",
+		"sass": "^1.32.5",
 		"sparql-connect": "^0.1.6",
 		"wellknown": "^0.5.0"
 	},

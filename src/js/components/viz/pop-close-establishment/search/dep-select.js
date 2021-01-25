@@ -7,12 +7,13 @@ import D from 'js/i18n';
 
 const queryBuilder = () => `
           PREFIX igeo:<http://rdf.insee.fr/def/geo#>
+		  PREFIX owl:<http://www.w3.org/2002/07/owl#>
           SELECT ?value ?label WHERE {
             SERVICE <${config.INSEE_ENDPOINT}> {
-          	?value a igeo:Departement .
-          	?value igeo:codeINSEE ?code .
-          	?value igeo:nom ?lab .
-          	FILTER(lang(?lab) = 'fr') .
+          	?dep a igeo:Departement .
+          	?dep igeo:codeINSEE ?code .
+          	?dep igeo:nom ?lab .
+			?dep owl:sameAs ?value .
             BIND(concat(STR(?code)," - ",STR(?lab)) as ?label)
           }
         }
