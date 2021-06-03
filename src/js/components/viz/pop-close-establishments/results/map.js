@@ -28,10 +28,7 @@ export default ({ pointCoords, polygons }) => {
 
 	const contentArray = [['Population', 'value', '']];
 
-	const pointContentArray = [
-		['Label', 'label', ''],
-		['Effectif', 'workForce', ''],
-	];
+	const pointContentArray = [['Label', 'label', '']];
 
 	const geoJsonData = mapData.map(({ contours, ...d }) => ({
 		contours: wktToGeojson(contours),
